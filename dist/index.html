@@ -22,47 +22,19 @@
         justify-content: space-around;
         align-items: center;
         row-gap: 50px;
-
-        button {
-            font-family: roboto, sans-serif;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 5px;
-            background: cyan;
-            font-weight: bold;
-        }
-        button:hover {
-            cursor: pointer;
-        }
-        button:active {
-            background: #64c6c6;
-            color: #fff;
-        }
     }
 </style>
 <body>
     <div class="test-container">
-<!--        <button onclick="test()">TEST</button>-->
         <div id="t">Waiting...</div>
     </div>
-
-
     <script>
+        const worker = new Worker("worker.js");
         const testElm = document.getElementById("t")
-        function updateUnix(ts) {
-            testElm.textContent = ts;
+        worker.onmessage = (e) => {
+            if(e.data.type === "unix-update")
+            testElm.textContent = e.data.value
         }
-    </script>
-
-    <script src="wasm_exec.js"></script>
-    <script>
-        const go = new Go();
-        WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject)
-            .then(result => {
-                go.run(result.instance);
-                console.log("Go WASM loaded successfully!");
-            })
-            .catch(err => console.error("Failed to load WASM:", err));
     </script>
 </body>
 </html>
