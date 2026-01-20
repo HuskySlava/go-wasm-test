@@ -42,30 +42,27 @@
 </style>
 <body>
     <div class="test-container">
-        <button onclick="test()">TEST</button>
+<!--        <button onclick="test()">TEST</button>-->
         <div id="t">Waiting...</div>
     </div>
 
-    <script src="wasm_exec.js"></script>
 
     <script>
-        const go = new Go();
+        const testElm = document.getElementById("t")
+        function updateUnix(ts) {
+            testElm.textContent = ts;
+        }
+    </script>
 
+    <script src="wasm_exec.js"></script>
+    <script>
+        const go = new Go();
         WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject)
             .then(result => {
                 go.run(result.instance);
                 console.log("Go WASM loaded successfully!");
             })
             .catch(err => console.error("Failed to load WASM:", err));
-
-        function test() {
-            if (typeof getUnixNano === "function") {
-                const unixTime = getUnixNano(); // call Go function
-                document.getElementById("t").textContent = "Unix time: " + unixTime;
-            } else {
-                document.getElementById("t").textContent = "WASM not loaded yet...";
-            }
-        }
     </script>
 </body>
 </html>

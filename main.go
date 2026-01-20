@@ -5,12 +5,20 @@ import (
 	"time"
 )
 
-func getUnixNano(this js.Value, args []js.Value) interface{} {
-	return time.Now().UnixNano()
+func updateUnixNano(ch chan int64) {
+	for {
+		ch <- time.Now().UnixNano()
+		time.Sleep(10 * time.Millisecond) // Throttle
+	}
 }
 
 func main() {
-	js.Global().Set("getUnixNano", js.FuncOf(getUnixNano))
+	ch := make(chan int64, 100) // buffered channel
+	go updateUnixNano(ch)
 
-	select {}
+	jsCallback := js.Global().Get("updateUnix")
+	for u := range ch {
+		jsCallback.Invoke(float64(u))
+	}
+
 }
