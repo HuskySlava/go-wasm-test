@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GO WASM Test</title>
+</head>
+<style>
+    html, body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        color: #fff;
+        font-family: roboto, sans-serif;
+    }
+    .test-container {
+        flex-direction: column;
+        display: flex;
+        margin-top: 200px;
+        justify-content: space-around;
+        align-items: center;
+        row-gap: 50px;
+
+        button {
+            font-family: roboto, sans-serif;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            background: cyan;
+            font-weight: bold;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        button:active {
+            background: #64c6c6;
+            color: #fff;
+        }
+    }
+</style>
+<body>
+    <div class="test-container">
+        <button onclick="test()">TEST</button>
+        <div>Waiting...</div>
+    </div>
+    <script>
+        function test(){
+
+        }
+    </script>
+</body>
+</html>
