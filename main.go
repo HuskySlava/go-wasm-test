@@ -8,7 +8,6 @@ import (
 func updateUnixNano(ch chan int64) {
 	for {
 		ch <- time.Now().UnixNano()
-		time.Sleep(10 * time.Millisecond) // Throttle
 	}
 }
 
@@ -22,3 +21,5 @@ func main() {
 	}
 
 }
+
+// test
