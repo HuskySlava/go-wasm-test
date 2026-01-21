@@ -1,2 +1,12 @@
 # IDE
-.idea
+.idea/
+
+# Node
+/node_modules
+
+# Compiled output
+/dist
+/tmp
+
+# System files
+.DS_Store
