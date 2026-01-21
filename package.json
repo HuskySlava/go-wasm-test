@@ -1,0 +1,23 @@
+{
+  "name": "go-wasm-test",
+  "version": "1.0.0",
+  "description": "GO WebAssembly tests",
+  "main": "index.js",
+  "scripts": {
+    "build": "bash ./build/build.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HuskySlava/go-wasm-test.git"
+  },
+  "author": "Slava Mihaelov",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/HuskySlava/go-wasm-test/issues"
+  },
+  "homepage": "https://github.com/HuskySlava/go-wasm-test#readme",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
