@@ -1,25 +1,41 @@
 package main
 
 import (
+	"fmt"
 	"syscall/js"
 	"time"
 )
 
-func updateUnixNano(ch chan int64) {
+func numberToHex(num uint) string {
+	const MaxNum = 16777216
+
+	if num < 1 {
+		num = 1
+	} else if num > 16777216 {
+		num -= MaxNum
+	}
+
+	hex := fmt.Sprintf("#%06x", num)
+
+	return hex
+}
+
+func updateUnixNano(ch chan string) {
 	for {
-		ch <- time.Now().UnixNano()
+		ms := time.Now().UnixMilli()
+		last8 := ms % 100_000_000
+		ch <- numberToHex(uint(last8))
+		time.Sleep(time.Millisecond * 16) // Throttle to 60 times a sec
 	}
 }
 
 func main() {
-	ch := make(chan int64, 100) // buffered channel
+	ch := make(chan string, 100) // buffered channel
 	go updateUnixNano(ch)
 
-	jsCallback := js.Global().Get("updateUnix")
-	for u := range ch {
-		jsCallback.Invoke(float64(u))
+	jsCallback := js.Global().Get("updateHexValue")
+	for color := range ch {
+		jsCallback.Invoke(color)
 	}
 
 }
-
-// test

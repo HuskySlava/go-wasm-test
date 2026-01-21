@@ -8,6 +8,10 @@ RED="\033[1;31m"
 RESET="\033[0m"
 
 
+## Clean dist
+printf "${YELLOW}Cleaning dist..${RESET}\n"
+rm -rf ./dist/*
+
 ## Compile WASM
 printf "${YELLOW}Compiling WASM..${RESET}\n"
 cd go-src # Move to GO folder
