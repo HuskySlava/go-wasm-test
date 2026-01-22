@@ -1,6 +1,6 @@
 # Makefile for Go → WebAssembly builds
 
-WASM_OUT = ../wasm-dist/main.wasm
+WASM_OUT = ../ts-src/public/wasm/main.wasm
 GO_FILES = $(shell find . -name '*.go')
 
 wasm:

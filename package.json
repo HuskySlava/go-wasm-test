@@ -20,7 +20,6 @@
   "homepage": "https://github.com/HuskySlava/go-wasm-test#readme",
   "devDependencies": {
     "typescript": "^5.9.3",
-    "vite": "^7.3.1",
-    "vite-plugin-static-copy": "^3.1.5"
+    "vite": "^7.3.1"
   }
 }

@@ -1,4 +1,4 @@
-const worker = new Worker("wasm_worker.js");
+const worker = new Worker(new URL('./wasm_worker.ts', import.meta.url));
 const testElm = document.getElementById("t")
 
 

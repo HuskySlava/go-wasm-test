@@ -19,9 +19,9 @@ make wasm
 
 ## Copy GO JS  from the installed go version, as per:
 ## https://go.dev/wiki/WebAssembly#getting-started
-mkdir -p ../wasm-dist
+mkdir -p ../ts-src/public/wasm
 GOROOT_PATH=$(go env GOROOT)
-cp -f $GOROOT_PATH/lib/wasm/wasm_exec.js ../wasm-dist
+cp -f $GOROOT_PATH/lib/wasm/wasm_exec.js ../ts-src/public/wasm
 
 cd .. # Move back to root
 
