@@ -17,9 +17,10 @@ printf "${YELLOW}Compiling WASM..${RESET}\n"
 cd go-src # Move to GO folder
 make wasm
 
-## Copy GO JS runtime
+## Copy GO JS  from the installed go version, as per:
+## https://go.dev/wiki/WebAssembly#getting-started
 mkdir -p ../wasm-dist
-cp -f wasm_exec.js ../wasm-dist
+cp -f $GOROOT/lib/wasm/wasm_exec.js ../wasm-dist
 
 cd .. # Move back to root
 
