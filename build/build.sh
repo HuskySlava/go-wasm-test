@@ -17,22 +17,16 @@ printf "${YELLOW}Compiling WASM..${RESET}\n"
 cd go-src # Move to GO folder
 make wasm
 
-## Copy WASM
-printf "${YELLOW}Copying WebAssembly to dist...${RESET}\n"
-cp dist/* ../dist
-cp wasm_exec.js ../dist # WASM Runtime
-rm -rf dist
+## Copy GO JS runtime
+mkdir -p ../wasm-dist
+cp -f wasm_exec.js ../wasm-dist
 
 cd .. # Move back to root
 
-## Compile TypeScript
-printf "${YELLOW}Compiling TypeScript...${RESET}\n"
-tsc
+## Compile and copy web files (TS, HTML, .etc)
+printf "${YELLOW}Compiling web...${RESET}\n"
+npx vite build
 
-## Copy html
-printf "${YELLOW}Copying HTML...${RESET}\n"
-cd ts-src
-cp index.html ../dist
 printf "\033[1;32mDone\033[0m\n"
 
 

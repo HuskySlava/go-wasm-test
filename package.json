@@ -4,7 +4,7 @@
   "description": "GO WebAssembly tests",
   "main": "index.js",
   "scripts": {
-    "start": "npx serve dist",
+    "start": "vite serve",
     "build": "bash ./build/build.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/HuskySlava/go-wasm-test#readme",
   "devDependencies": {
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1",
+    "vite-plugin-static-copy": "^3.1.5"
   }
 }

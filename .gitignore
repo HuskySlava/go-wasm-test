@@ -7,6 +7,7 @@
 # Compiled output
 /dist
 /tmp
+/wasm-dist
 
 # System files
 .DS_Store
